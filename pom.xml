@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<!-- pom.xml とは？
+**Java プロジェクトの設計図（設定ファイル）**です。
+・どんなライブラリを使うか（依存関係）
+・どの Java バージョンで動かすか
+・Spring Boot のバージョン
+・パッケージ方法
+・プラグインの設定
+などをすべて pom.xml で決める。-->
+
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Mavenのバージョン（4系のフォーマっトを使うよ、という意味） -->
+
+    <groupId>com.example</groupId>
+    <artifactId>MybatisSample</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <!--  プロジェクトの固有ID
+    （Javaのプロジェクトはこの3つの組み合わせで一意に管理される）
+    groupId → 会社名やドメイン
+    artifactId → アプリ名
+    version → バージョン番号（SNAPSHOT は開発中を意味する）-->
+
+
+    <!-- Spring Boot 4.0.0 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.0</version>
+    </parent>
+    <!--Spring Bootの標準設定をまとめて引き継ぐための構文。
+    これにより：
+    依存関係のバージョン管理が簡単になる
+    Spring Boot の build 設定を自動で使える
+    Test の設定も自動で有効になる
+    つまり Spring Boot プロジェクトとして動くための一式を読み込む部分。  -->
+
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <!-- ▼▼▼ ここを中野さんの依存関係に合わせて修正済 ▼▼▼ -->
+    <dependencies>
+
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <!-- Thymeleaf（テンプレートエンジン）
+         HTML（テンプレート）を画面表示するためのライブラリ-->
+
+        <!-- Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--Web（Spring MVC）
+         Webアプリを作るためのライブラリ（Controller / REST / Tomcatなど） -->
+
+        <!-- MyBatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!-- MyBatis（DBとJavaをつなぐ ORM/Mapper フレームワーク）
+         MyBatis を Spring Boot と統合するための設定を丸ごと提供 -->
+
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!--MySQL ドライバー
+          Java から MySQL に接続するためのドライバー
+          scope="runtime" は「本番だけ必要で、ビルド時はいらない」という意味。-->
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!-- Lombok（getter/setter 自動生成）
+         Java のコードを短く書くための便利ツール -->
+
+        <!-- Tomcat （war想定の場合 provided でもOK）-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Tomcat（provided）
+          Spring Boot の Tomcat は通常 組み込み ですが、「war ファイルでデプロイする時は外部 Tomcat を使う」という意味で provided にしている。
+          Spring Boot の Jar 実行には不要。-->
+
+        <!-- Validation -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <!--Validation（@NotNull, @Email などのバリデーション）-->
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--  Test（テスト用のライブラリ）
+        JUnit、MockMvcなどをまとめて提供。-->
+    </dependencies>
+    <!-- ▲▲▲ 修正済み ▲▲▲ -->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+        <!-- build セクション＝ビルド設定
+        Spring Boot アプリを Maven で
+        起動（mvn spring-boot:run）
+        パッケージ（mvn package）
+        できるようにするためのプラグイン。
+        これが無いと spring-boot:run が使えない -->
+</project>
