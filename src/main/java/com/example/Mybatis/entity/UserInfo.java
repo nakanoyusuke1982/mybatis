@@ -1,4 +1,5 @@
 package com.example.Mybatis.entity;
+// この文章は後から消す
 
 import java.io.Serializable;
 import java.util.Date;
