@@ -1,4 +1,4 @@
-package com.example.Mybatis.service;
+package com.example.Mybatis.controller;
 // この部分が赤線になっている理由が不明
 
 import java.util.List;
@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Mybatis.dao.UserInfoMapper;
 import com.example.Mybatis.dto.UserAddRequest;
 import com.example.Mybatis.dto.UserSearchRequest;
 import com.example.Mybatis.dto.UserUpdateRequest;
 import com.example.Mybatis.entity.UserInfo;
+import com.example.service.UserInfoMapper;
 
 /**
  * ユーザー情報 Service
