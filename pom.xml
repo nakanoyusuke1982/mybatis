@@ -25,11 +25,12 @@
     version → バージョン番号（SNAPSHOT は開発中を意味する）-->
 
 
-    <!-- Spring Boot 4.0.0 -->
+    <!-- Spring Boot 3.5.3 -->
+    <!-- Spring Boot 4.0.0 は MyBatis auto-configuration が未対応のため 3.x を使用 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0</version>
+        <version>3.5.3</version>
     </parent>
     <!--Spring Bootの標準設定をまとめて引き継ぐための構文。
     これにより：
@@ -65,7 +66,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.2</version>
+            <version>3.0.4</version>
         </dependency>
         <!-- MyBatis（DBとJavaをつなぐ ORM/Mapper フレームワーク）
          MyBatis を Spring Boot と統合するための設定を丸ごと提供 -->
