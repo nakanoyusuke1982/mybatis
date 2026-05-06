@@ -1,5 +1,4 @@
-package com.example.Mybatis.controller;
-// この部分が赤線になっている理由が不明
+package com.example.Mybatis.service;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ import com.example.Mybatis.dto.UserAddRequest;
 import com.example.Mybatis.dto.UserSearchRequest;
 import com.example.Mybatis.dto.UserUpdateRequest;
 import com.example.Mybatis.entity.UserInfo;
-import com.example.service.UserInfoMapper;
+import com.example.Mybatis.dao.UserInfoMapper;
 
 /**
  * ユーザー情報 Service
